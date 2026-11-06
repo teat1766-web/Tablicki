@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORLD OF PLAQUES | Элитные металлические таблички</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #1a1a1a;
+            --color-orange: #ff6600;
+            --color-silver: #cccccc;
+        }
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-silver);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .text-accent { color: var(--color-orange); }
+        .bg-accent { background-color: var(--color-orange); }
+        .border-accent { border-color: var(--color-orange); }
+        
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeInSlideUp 1.2s ease-out forwards;
+            opacity: 0;
+        }
+        #hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="pt-24">
+
+    <!-- Навигация -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-accent/30 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-widest text-silver uppercase">
+                <span class="text-accent">WORLD</span> OF PLAQUES
+            </div>
+            <div class="text-sm">
+                <a href="tel:+79624102019" class="px-4 py-2 rounded-lg bg-accent text-black font-bold hover:bg-orange-700 transition duration-300 shadow-md">
+                    Связаться с нами
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <section id="hero">
+        <div class="max-w-5xl mx-auto px-6">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase mb-4 tracking-tighter leading-none animate-fade-in text-white">
+                WORLD OF PLAQUES
+            </h1>
+            <p class="text-xl sm:text-2xl md:text-3xl font-medium uppercase mb-10 text-silver animate-fade-in">
+                Элитные металлические адресные таблички
+            </p>
+            <div class="p-8 bg-[#282828] border-2 border-accent rounded-xl shadow-2xl animate-fade-in">
+                <p class="text-lg sm:text-xl font-light uppercase mb-2 tracking-wider">
+                    Готовы подчеркнуть ваш статус?
+                </p>
+                <a href="tel:+79624102019" class="inline-block text-3xl sm:text-4xl font-bold tracking-wider text-accent hover:opacity-90 transition duration-300">
+                    +7 962 410-20-19
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог -->
+    <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow">
+        <h2 class="text-4xl sm:text-5xl font-bold text-center mb-10 uppercase text-accent animate-fade-in">
+            Наш каталог
+        </h2>
+        <div id="catalog-container"></div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="bg-black py-10 mt-auto border-t border-accent/30 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-xl text-gray-400 mb-4 uppercase">Свяжитесь с нами для заказа</p>
+            <a href="tel:+79624102019" class="inline-block text-3xl font-bold text-accent hover:text-white transition duration-300 mb-8">
+                +7 962 410-20-19
+            </a>
+            
+            <div class="text-sm text-gray-500 max-w-4xl mx-auto space-y-2 mb-6">
+                <p>Информация на сайте не является публичной офертой (ст. 437 ГК РФ). Актуальные цены, наличие и условия заказа уточняйте по телефону.</p>
+            </div>
+            
+            <div class="text-sm text-gray-600 border-t border-gray-800 pt-6">
+                <p>© 2026 World of Plaques. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Умная проверка расширений: jpg -> png -> jpeg -> заглушка
+        function handleImageError(img) {
+            const currentSrc = img.src;
+            if (currentSrc.endsWith('.jpg')) {
+                img.src = currentSrc.replace('.jpg', '.png');
+            } else if (currentSrc.endsWith('.png')) {
+                img.src = currentSrc.replace('.png', '.jpeg');
+            } else {
+                img.onerror = null; 
+                img.src = 'https://via.placeholder.com/300x200/222222/ff6600?text=Нет+фото';
+            }
+        }
+
+        const products = [
+            // --- АДРЕСНЫЕ ТАБЛИЧКИ ---
+            { category: "Адресные таблички", name: "Адресная табличка", id: "002", size: "37x30 см", price: "8 700 руб.", image: "images/AT-002_37x30cm_8700rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "003 (a)", size: "65x20 см", price: "9 200 руб.", image: "images/003.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "003 (б)", size: "70x21 см", price: "10 100 руб.", image: "images/AT-003B_70x21cm_10100rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "004", size: "58x30 см", price: "11 900 руб.", image: "images/AT-004.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "005", size: "58x20 см", price: "8 300 руб.", image: "images/AT-005_58x20cm_8300rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "006", size: "57x28 / 60x30 см", price: "10 200 / 11 400 руб.", image: "images/AT-006_57x28cm_10200rub_+_60x30cm_11400rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "007", size: "53x29 см", price: "10 700 руб.", image: "images/AT-007_53x29cm_10700rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "008", size: "58x12 см", price: "7 200 руб.", image: "images/AT-008_58x12cm_7200rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "009", size: "57x26 см", price: "9 200 руб.", image: "images/AT-009_57x26cm_9200rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "010", size: "54x40 см", price: "11 800 руб.", image: "images/AT-010_54x40cm_11800rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "011", size: "57x34 см", price: "11 800 руб.", image: "images/AT-011_57x34cm_11800rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "012", size: "54x30 см", price: "10 400 руб.", image: "images/AT-012_54x30cm_10400rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "015", size: "37x32 см", price: "8 700 руб.", image: "images/AT-015_37x32cm_8700rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "017", size: "65x40 см", price: "12 400 руб.", image: "images/AT-017_65x40cm_12400rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "018", size: "37x37 см", price: "9 000 руб.", image: "images/AT-018_37x37cm_9000rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "019", size: "65x40 см", price: "12 400 руб.", image: "images/AT-019_65x40cm_12400rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "020", size: "60x20 см", price: "10 200 руб.", image: "images/AT-020_60x20cm_10200rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "021", size: "60x23 см", price: "10 200 руб.", image: "images/AT-021_60x23cm_10200rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "022", size: "40x30 см", price: "7 500 руб.", image: "images/AT-022_40x30cm_7500rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "023", size: "37x38 см", price: "10 200 руб.", image: "images/AT-023_37x38cm_10200rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "025", size: "70x22 / 80x25 см", price: "14 600 / 16 600 руб.", image: "images/AT-025_70x22cm_14600rub_+_80x25cm_16600rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "026", size: "60x30 см", price: "13 600 руб.", image: "images/AT-026_60x30cm_13600rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "027", size: "70x18 см", price: "8 300 руб.", image: "images/AT-027_70x18cm_8300rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "028", size: "43x37 см", price: "16 600 руб.", image: "images/AT-028_43x37cm_16600rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "029", size: "95x35 см", price: "22 100 руб.", image: "images/AT-029_37x40cm_9000rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "030", size: "40x50 см", price: "16 600 руб.", image: "images/AT-030_40x50cm_16600rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "031", size: "65x48 см", price: "19 800 руб.", image: "images/AT-031_65x48cm_19800rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "032", size: "35x31 см", price: "9 000 руб.", image: "images/AT-032_35x31cm_9000rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "033", size: "60x22 / 70x30 см", price: "9 600 / 16 200 руб.", image: "images/AT-033_60x22cm_9600rub_+_70x30cm_16200rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "034", size: "36x30 см", price: "9 200 руб.", image: "images/AT-034_36x30cm_9200rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "035", size: "65x30 см", price: "11 800 руб.", image: "images/AT-035_65x30cm_11800rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "036", size: "35x27 см", price: "8 700 руб.", image: "images/AT-036_35x27cm_8700rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "037", size: "37x37 см", price: "11 100 руб.", image: "images/AT-037_37x37cm_11100rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "038", size: "60x30 см", price: "9 800 руб.", image: "images/AT-038_60x27cm_13200rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "039", size: "60x54 см", price: "22 400 руб.", image: "images/AT-039_60x40cm_17400rub.jpg" }, 
+            { category: "Адресные таблички", name: "Адресная табличка", id: "040", size: "54x24 см", price: "11 100 руб.", image: "images/AT-040_54x24cm_11100rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "044", size: "60x20 см", price: "9 000 руб.", image: "images/AT-044_60x20cm_9000rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "046", size: "35x35 см", price: "11 100 руб.", image: "images/AT-046_35x35cm_11100rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "049", size: "58x18 см", price: "9 000 руб.", image: "images/AT-049_58x18cm_9000rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "051", size: "58x24 см", price: "11 700 руб.", image: "images/AT-051_58x24cm_11700rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "052", size: "60x20 см", price: "11 200 руб.", image: "images/AT-052_60x20cm_11200rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "053", size: "58x21 см", price: "10 400 руб.", image: "images/AT-053_58x18cm_10400rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "054", size: "58x18 см", price: "8 900 руб.", image: "images/AT-054_58x18cm_8900rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "055", size: "58x22 см", price: "10 800 руб.", image: "images/AT-055_58x22cm_10800rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "058", size: "60x33 см", price: "11 300 руб.", image: "images/AT-058_60x33cm_11300rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "059", size: "60x32 см", price: "12 300 руб.", image: "images/AT-059_60x32cm_12300rub.jpg" },
+            { category: "Адресные таблички", name: "Адресная табличка", id: "060", size: "37x40 см", price: "12 000 руб.", image: "images/AT-060_37x40cm_12000rub.jpg" },
+
+            // --- НОМЕРА ДОМОВ ---
+            { category: "Номера домов", name: "Номер на дом", id: "ND-02", size: "20x20 см", price: "4 500 руб.", image: "images/ND-02_20x20cm_4500rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-03", size: "30x26 см", price: "5 800 руб.", image: "images/ND-03_30x26cm_5800rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-04", size: "30x26 см", price: "6 500 руб.", image: "images/ND-04_30x26cm_6500rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-05", size: "27x19 см", price: "4 500 руб.", image: "images/ND-05_27x19cm_4500rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-06", size: "25x15 см", price: "4 500 руб.", image: "images/ND-06_25x25cm_4500rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-07", size: "20x40 см", price: "5 800 руб.", image: "images/ND-07_20x40cm_5800rub.jpg" }, 
+            { category: "Номера домов", name: "Номер на дом", id: "ND-08", size: "17x14 см", price: "4 500 руб.", image: "images/ND-08_17x14cm_4500rub.jpg" },
+            { category: "Номера домов", name: "Номер на дом", id: "ND-09", size: "30x19 см", price: "4 500 руб.", image: "images/ND-09_25x15cm_5600rub.jpg" },
+
+            // --- ПОЧТОВЫЕ НАКЛАДКИ ---
+            { category: "Почтовые накладки", name: "Почтовая накладка", id: "ПН-01", size: "28x14 см", price: "4 500 руб.", image: "images/PN-01_28x14cm_4500rub.jpg" }, 
+            { category: "Почтовые накладки", name: "Почтовая накладка", id: "ПН-02", size: "28x14 см", price: "4 500 руб.", image: "images/PN-02_28x14cm_4500rub.jpg" }, 
+            { category: "Почтовые накладки", name: "Почтовая накладка", id: "ПН-03", size: "30x45 см", price: "9 300 руб.", image: "images/PN-03_30x45cm_9300rub.jpg" },
+            { category: "Почтовые накладки", name: "Почтовый ящик", id: "PBOX-01", size: "40x25 см", price: "5 000 руб.", image: "images/PBOX-01_40x25cm_5000rub_1.jpg" },
+
+            // --- ИНФОРМАЦИОННЫЕ ТАБЛИЧКИ ---
+            // Ищем camera.jpg в папке images
+            { category: "Информационные таблички", name: "Видеонаблюдение", id: "INFO-01", size: "30x30 см", price: "5 400 руб.", image: "images/camera.jpg" }
+        ];
+
+        function renderCatalog() {
+            const container = document.getElementById('catalog-container');
+            if (!container) return;
+
+            const groupedProducts = products.reduce((acc, product) => {
+                if (!acc[product.category]) acc[product.category] = [];
+                acc[product.category].push(product);
+                return acc;
+            }, {});
+
+            let htmlContent = '';
+
+            for (const categoryName in groupedProducts) {
+                const productsInCategory = groupedProducts[categoryName];
+                const categoryNumber = Object.keys(groupedProducts).indexOf(categoryName) + 1;
+                const formattedCategory = `${categoryNumber}. ${categoryName.toUpperCase()}`;
+
+                htmlContent += `
+                    <section class="mb-12 animate-fade-in">
+                        <h3 class="text-3xl font-bold uppercase mb-6 tracking-wider text-accent border-b-2 border-accent/50 pb-2">
+                            ${formattedCategory}
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                `;
+
+                productsInCategory.forEach(product => {
+                    const safeImagePath = encodeURI(product.image);
+
+                    htmlContent += `
+                        <div class="product-card bg-[#222222] rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-[1.02] border border-gray-700 hover:border-accent flex flex-col">
+                            
+                            <div class="h-44 bg-[#1a1a1a] flex items-center justify-center overflow-hidden relative p-2 border-b border-gray-700">
+                                <img src="${safeImagePath}" alt="${product.name}" 
+                                     class="object-contain w-full h-full opacity-90 transition duration-300 hover:opacity-100"
+                                     onerror="handleImageError(this)">
+                            </div>
+
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">${product.name}</h4>
+                                    <p class="text-xs text-gray-400 mb-1">Артикул: <span class="text-white">${product.id}</span></p>
+                                    <p class="text-sm font-semibold mb-2">Размер: ${product.size}</p>
+                                </div>
+                                
+                                <div class="mt-2 pt-2 border-t border-gray-700">
+                                    <span class="text-2xl font-extrabold text-accent">${product.price}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                htmlContent += `</div></section>`;
+            }
+            container.innerHTML = htmlContent;
+        }
+
+        window.onload = renderCatalog;
+    </script>
+</body>
+</html>
