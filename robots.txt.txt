@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://teat1766-web.github.io/Tablicki/sitemap.xml
