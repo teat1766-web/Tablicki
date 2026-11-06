@@ -1,14 +1,15 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ВСТАВЬТЕ СЮДА НОВЫЙ КОД, СКОПИРОВАННЫЙ ИЗ GOOGLE -->
-    <meta name="google-site-verification" content="dAwS3YdDAEEKunk7CyNePF-YpDgh3HLt88WjrSgo-GE" />
+    <!-- КОД ПОДТВЕРЖДЕНИЯ GOOGLE -->
+    <meta name="google-site-verification" content="dAwS3YdA..." />
     
-    <title>WORLD OF PLAQUES | Элитные металлические таблички</title>
-    <!-- ... остальной код ... -->
+    <!-- SEO: Тайтл и Описание с географией и ключевыми словами -->
+    <title>Адресные таблички на дом в Ставропольском крае | Доставка по РФ</title>
+    <meta name="description" content="Элитные цельнометаллические адресные таблички из силумина. Изготовление по стандартным и индивидуальным размерам. Работаем в Ставропольском крае, доставка по всей России.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,11 +70,12 @@
     <!-- Главный экран -->
     <section id="hero">
         <div class="max-w-5xl mx-auto px-6">
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase mb-4 tracking-tighter leading-none animate-fade-in text-white">
-                WORLD OF PLAQUES
+            <!-- Изменили H1 для поисковиков -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase mb-4 tracking-tighter leading-none animate-fade-in text-white">
+                Адресные таблички на дом
             </h1>
             <p class="text-xl sm:text-2xl md:text-3xl font-medium uppercase mb-10 text-silver animate-fade-in">
-                Элитные металлические адресные таблички
+                Элитные металлические таблички из силумина
             </p>
             <div class="p-8 bg-[#282828] border-2 border-accent rounded-xl shadow-2xl animate-fade-in">
                 <p class="text-lg sm:text-xl font-light uppercase mb-2 tracking-wider">
@@ -86,8 +88,19 @@
         </div>
     </section>
 
-    <!-- Каталог -->
+    <!-- Каталог и SEO-текст -->
     <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow">
+        
+        <!-- БЛОК С SEO-ТЕКСТОМ (Добавлен для поисковиков) -->
+        <section class="mb-16 bg-[#222222] p-6 sm:p-8 rounded-xl border border-gray-700 animate-fade-in shadow-lg">
+            <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4 text-white">Изготовление адресных табличек в Ставропольском крае</h2>
+            <div class="text-gray-300 space-y-4 text-base sm:text-lg leading-relaxed">
+                <p>Наша мастерская <strong>«WORLD OF PLAQUES»</strong> специализируется на производстве элитных цельнометаллических адресных табличек. Мы используем высокопрочный сплав — <strong>силумин</strong>, который не боится ни мороза, ни жары, ни влаги. Наши таблички не выгорают на солнце и служат десятилетиями, сохраняя безупречный внешний вид.</p>
+                <p>Мы работаем по <strong>Ставропольскому краю</strong> (Ставрополь, Пятигорск, Кисловодск, Невинномысск и другие города), а также осуществляем <strong>доставку по всей России</strong>. Вы можете выбрать любой стандартный размер из нашего каталога или заказать изготовление таблички по индивидуальным размерам.</p>
+                <p>Установите табличку на дом, коттедж, гараж или офис, чтобы подчеркнуть статус вашей недвижимости и облегчить поиск вашего адреса гостям и службам доставки.</p>
+            </div>
+        </section>
+
         <h2 class="text-4xl sm:text-5xl font-bold text-center mb-10 uppercase text-accent animate-fade-in">
             Наш каталог
         </h2>
@@ -103,6 +116,7 @@
             </a>
             
             <div class="text-sm text-gray-500 max-w-4xl mx-auto space-y-2 mb-6">
+                <p>Работаем по Ставропольскому краю. Доставка по всей России.</p>
                 <p>Информация на сайте не является публичной офертой (ст. 437 ГК РФ). Актуальные цены, наличие и условия заказа уточняйте по телефону.</p>
             </div>
             
@@ -227,7 +241,7 @@
                         <div class="product-card bg-[#222222] rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-[1.02] border border-gray-700 hover:border-accent flex flex-col">
                             
                             <div class="h-44 bg-[#1a1a1a] flex items-center justify-center overflow-hidden relative p-2 border-b border-gray-700">
-                                <img src="${safeImagePath}" alt="${product.name}" 
+                                <img src="${safeImagePath}" alt="${product.name} ${product.id}" 
                                      class="object-contain w-full h-full opacity-90 transition duration-300 hover:opacity-100"
                                      onerror="handleImageError(this)">
                             </div>
